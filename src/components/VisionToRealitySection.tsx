@@ -98,7 +98,7 @@ const TRUST_PILLARS = [
   },
 ];
 
-export const TestimonialsSection: React.FC = () => {
+export const VisionToRealitySection: React.FC = () => {
   const { theme } = useTheme();
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -150,7 +150,7 @@ export const TestimonialsSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      id="testimonials"
+      id="vision-reality"
       className="py-20 md:py-28 relative overflow-hidden"
     >
       {/* Keyframes for border light sweep, floating holographic cards, and glow pulse */}
@@ -214,8 +214,8 @@ export const TestimonialsSection: React.FC = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 relative z-10">
-        {/* Full-Width Futuristic Glassmorphism CTA Banner Container (28px-32px rounded corners) */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 relative z-10">
+        {/* Full-Width Futuristic Glassmorphism CTA Banner Container */}
         <div
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
@@ -252,51 +252,28 @@ export const TestimonialsSection: React.FC = () => {
               className="w-1/2 h-full"
               style={{
                 background:
-                  'linear-gradient(90deg, transparent 0%, rgba(22, 119, 255, 0.85) 50%, transparent 100%)',
-                boxShadow: '0 0 16px rgba(56, 189, 248, 0.8)',
-                animation:
-                  'finalCtaBorderSweep 8s ease-in-out infinite reverse',
+                  'linear-gradient(90deg, transparent 0%, rgba(22, 119, 255, 0.85) 45%, rgba(125, 211, 252, 0.95) 50%, rgba(22, 119, 255, 0.85) 55%, transparent 100%)',
+                boxShadow: '0 0 16px rgba(56, 189, 248, 0.85)',
+                animation: 'finalCtaBorderSweep 8s ease-in-out infinite reverse',
               }}
             />
           </div>
-
-          {/* Futuristic Metallic HUD Corner Accents */}
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute top-3.5 left-3.5 w-6 h-6 border-t-2 border-l-2 border-sky-300/80 rounded-tl-xl z-30 transition-all duration-500 group-hover/cta:w-8 group-hover/cta:h-8"
-            style={{ filter: 'drop-shadow(0 0 8px rgba(56, 189, 248, 0.8))' }}
-          />
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute top-3.5 right-3.5 w-6 h-6 border-t-2 border-r-2 border-sky-300/80 rounded-tr-xl z-30 transition-all duration-500 group-hover/cta:w-8 group-hover/cta:h-8"
-            style={{ filter: 'drop-shadow(0 0 8px rgba(56, 189, 248, 0.8))' }}
-          />
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute bottom-3.5 left-3.5 w-6 h-6 border-b-2 border-l-2 border-sky-300/80 rounded-bl-xl z-30 transition-all duration-500 group-hover/cta:w-8 group-hover/cta:h-8"
-            style={{ filter: 'drop-shadow(0 0 8px rgba(56, 189, 248, 0.8))' }}
-          />
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute bottom-3.5 right-3.5 w-6 h-6 border-b-2 border-r-2 border-sky-300/80 rounded-br-xl z-30 transition-all duration-500 group-hover/cta:w-8 group-hover/cta:h-8"
-            style={{ filter: 'drop-shadow(0 0 8px rgba(56, 189, 248, 0.8))' }}
-          />
 
           {/* Main 2-Column Layout: Left Side Content + Right Side Photorealistic Creative Workspace */}
           <div className="relative z-20 grid grid-cols-1 lg:grid-cols-12 items-center">
             {/* LEFT SIDE CONTENT */}
             <div
-              className={`lg:col-span-6 p-7 sm:p-10 md:p-12 lg:py-14 lg:pl-12 lg:pr-8 flex flex-col justify-between transition-all duration-700 ease-out ${
+              className={`lg:col-span-6 p-7 sm:p-10 lg:p-12 xl:p-14 flex flex-col justify-between transition-all duration-700 ease-out ${
                 isVisible
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-6'
               }`}
               style={{ transitionDelay: '120ms' }}
             >
-              {/* Brand Emblem & Eyebrow Tagline */}
               <div>
-                <div className="inline-flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-5">
-                  <div className="flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-sky-500/15 border border-sky-400/40 backdrop-blur-md shadow-[0_0_20px_rgba(56,189,248,0.25)]">
+                {/* Eyebrow with AVENIX Logo Emblem */}
+                <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-sky-500/15 border border-sky-400/40 backdrop-blur-md shadow-[0_0_20px_rgba(56,189,248,0.22)] mb-5 sm:mb-6 max-w-full">
+                  <div className="flex items-center gap-1.5 shrink-0 border-r border-sky-400/30 pr-2">
                     <img
                       src={avenixLogo}
                       alt="AVENIX"
@@ -336,7 +313,7 @@ export const TestimonialsSection: React.FC = () => {
                   {/* Primary CTA Button: "Start Your Project" */}
                   <button
                     type="button"
-                    onClick={() => scrollToSection('#contact')}
+                    onClick={() => scrollToSection('#final-cta')}
                     className="group/primary relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-full font-display text-sm sm:text-base font-bold text-[#031126] cursor-pointer transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
                     style={{
                       background:
@@ -488,4 +465,3 @@ export const TestimonialsSection: React.FC = () => {
     </section>
   );
 };
-

@@ -137,7 +137,7 @@ export const ToolsTechnology: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      id="tools"
+      id="pricing"
       className="py-24 md:py-32 border-y relative overflow-hidden transition-colors"
       style={{
         backgroundColor:
@@ -227,10 +227,10 @@ export const ToolsTechnology: React.FC = () => {
           }`}
         >
           {/* Top AVENIX Studio Emblem + flanking lines with Tagline */}
-          <div className="flex items-center justify-center gap-3 sm:gap-5 mb-5">
+          <div className="flex items-center justify-center gap-2.5 sm:gap-5 mb-4 sm:mb-5">
             <span
               aria-hidden="true"
-              className="h-[1px] w-10 sm:w-20 md:w-28"
+              className="h-[1px] w-6 sm:w-20 md:w-28"
               style={{
                 background:
                   theme === 'dark'
@@ -238,15 +238,15 @@ export const ToolsTechnology: React.FC = () => {
                     : 'linear-gradient(90deg, transparent 0%, rgba(29, 116, 223, 0.6) 100%)',
               }}
             />
-            <div className="inline-flex items-center gap-2">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2">
               <img
                 src={avenixLogo}
                 alt=""
                 aria-hidden="true"
-                className="w-4 h-4 object-contain"
+                className="w-3.5 sm:w-4 h-3.5 sm:h-4 object-contain"
               />
               <span
-                className="text-[11px] sm:text-xs font-mono-tech uppercase tracking-[0.28em] font-semibold"
+                className="text-[10px] sm:text-xs font-mono-tech uppercase tracking-[0.24em] sm:tracking-[0.28em] font-semibold"
                 style={{ color: theme === 'dark' ? '#BAE6FD' : '#1D74DF' }}
               >
                 SIMPLE • TRANSPARENT • SCALABLE
@@ -254,7 +254,7 @@ export const ToolsTechnology: React.FC = () => {
             </div>
             <span
               aria-hidden="true"
-              className="h-[1px] w-10 sm:w-20 md:w-28"
+              className="h-[1px] w-6 sm:w-20 md:w-28"
               style={{
                 background:
                   theme === 'dark'
@@ -266,7 +266,7 @@ export const ToolsTechnology: React.FC = () => {
 
           {/* Main Section Title */}
           <h2
-            className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.08]"
+            className="font-display text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1]"
             style={{
               color: theme === 'dark' ? '#FFFFFF' : '#0F172A',
               textWrap: 'balance',
@@ -286,7 +286,7 @@ export const ToolsTechnology: React.FC = () => {
 
           {/* Subtitle */}
           <p
-            className="mt-4 sm:mt-5 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto"
+            className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto"
             style={{ color: theme === 'dark' ? '#E2E8F0' : '#334155' }}
           >
             Choose the level that matches your project goals and transform your

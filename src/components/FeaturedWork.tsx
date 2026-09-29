@@ -206,9 +206,19 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const [videoLoadingMap, setVideoLoadingMap] = useState<Record<string, boolean>>({
     'luxury-perfume-hero': true,
   });
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(typeof window !== 'undefined' && window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const sectionRef = useRef<HTMLElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -389,17 +399,17 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
         <div className="avenix-metallic-floor absolute bottom-0 left-0 right-0 h-48 md:h-64 pointer-events-none opacity-85" />
       </div>
 
-      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+      <div className="max-w-[1480px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* =========================================================================
             TOP ROW / LAYOUT: Left Content Panel + Right Layered Showcase
             ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
           {/* =====================================================================
               LEFT CONTENT PANEL (Inspired by reference screenshot)
               ===================================================================== */}
           <div className="lg:col-span-5 flex flex-col justify-center">
             {/* Section label with futuristic cyan neon line accent */}
-            <div className="flex items-center gap-3 mb-5">
+            <div className="flex items-center gap-3 mb-4 sm:mb-5">
               <span className="w-8 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
               <span
                 className="text-xs uppercase tracking-[0.28em] font-semibold font-mono-tech"
@@ -413,7 +423,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
 
             {/* Main Heading */}
             <h2
-              className="font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.12] mb-6"
+              className="font-display text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.12] mb-5 sm:mb-6"
               style={{
                 color: theme === 'dark' ? '#FFFFFF' : '#111827',
               }}
@@ -426,7 +436,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
 
             {/* Supporting Text */}
             <p
-              className="text-base sm:text-lg leading-relaxed font-normal mb-8 max-w-xl"
+              className="text-sm sm:text-lg leading-relaxed font-normal mb-7 sm:mb-8 max-w-xl"
               style={{
                 color: theme === 'dark' ? '#94A3B8' : '#334155',
               }}
@@ -437,10 +447,10 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
             </p>
 
             {/* CTA Button: View All Projects */}
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 mb-8 sm:mb-10">
               <button
                 onClick={handleViewAllProjects}
-                className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full text-sm font-semibold tracking-wider font-mono-tech uppercase transition-all duration-300 border shadow-lg hover:shadow-cyan-500/25 active:scale-[0.98]"
+                className="group relative inline-flex items-center gap-3 px-6 sm:px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider font-mono-tech uppercase transition-all duration-300 border shadow-lg hover:shadow-cyan-500/25 active:scale-[0.98]"
                 style={{
                   backgroundColor:
                     theme === 'dark' ? 'rgba(11, 20, 38, 0.85)' : '#FFFFFF',
@@ -471,7 +481,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
 
             {/* Achievement Metrics List (Under the button) with futuristic dividers & subtle neon glow lines */}
             <div
-              className="p-5 rounded-2xl border backdrop-blur-xl transition-all"
+              className="p-4 sm:p-5 rounded-2xl border backdrop-blur-xl transition-all"
               style={{
                 backgroundColor:
                   theme === 'dark' ? 'rgba(11, 20, 38, 0.55)' : 'rgba(255, 255, 255, 0.8)',
@@ -479,7 +489,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
                   theme === 'dark' ? 'rgba(56, 189, 248, 0.15)' : 'rgba(42, 140, 255, 0.18)',
               }}
             >
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-3.5 sm:gap-4">
                 {/* Metric 1 */}
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/25 flex items-center justify-center shrink-0 mt-0.5 text-cyan-400">
@@ -511,7 +521,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
                 </div>
 
                 {/* Metric 3 */}
-                <div className="flex items-start gap-3 pt-3 border-t border-white/10">
+                <div className="flex items-start gap-3 pt-3 border-t border-white/10 min-[420px]:border-t-0 min-[420px]:pt-0">
                   <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/25 flex items-center justify-center shrink-0 mt-0.5 text-cyan-400">
                     <Globe className="w-4 h-4" />
                   </div>
@@ -526,7 +536,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
                 </div>
 
                 {/* Metric 4 */}
-                <div className="flex items-start gap-3 pt-3 border-t border-white/10">
+                <div className="flex items-start gap-3 pt-3 border-t border-white/10 min-[420px]:border-t-0 min-[420px]:pt-0">
                   <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/25 flex items-center justify-center shrink-0 mt-0.5 text-cyan-400">
                     <InfinityIcon className="w-4 h-4" />
                   </div>
@@ -549,10 +559,10 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
               - Side cards appear partially visible and slightly behind
               - Glassmorphism, futuristic borders, neon glow, depth shadows
               ===================================================================== */}
-          <div className="lg:col-span-7 relative flex flex-col items-center">
+          <div className="lg:col-span-7 relative flex flex-col items-center w-full">
             {/* 3D Carousel Stage */}
             <div
-              className="avenix-showcase-perspective relative w-full h-[430px] sm:h-[490px] md:h-[530px] flex items-center justify-center"
+              className="avenix-showcase-perspective relative w-full h-[350px] xs:h-[400px] sm:h-[490px] md:h-[530px] flex items-center justify-center overflow-hidden sm:overflow-visible"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
@@ -570,7 +580,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
                   return null;
                 }
 
-                // Transform styles based on relative offset
+                // Transform styles based on relative offset and screen width
                 let transformStyle = '';
                 let zIndex = 10;
                 let opacity = 0;
@@ -582,22 +592,30 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
                   opacity = 1;
                   filter = 'none';
                 } else if (isLeft) {
-                  transformStyle = 'translateX(-48%) translateZ(-90px) scale(0.82) rotateY(9deg)';
+                  transformStyle = isMobile
+                    ? 'translateX(-34%) translateZ(-70px) scale(0.85) rotateY(6deg)'
+                    : 'translateX(-48%) translateZ(-90px) scale(0.82) rotateY(9deg)';
                   zIndex = 20;
                   opacity = 0.65;
                   filter = 'brightness(0.72) saturate(0.85)';
                 } else if (isRight) {
-                  transformStyle = 'translateX(48%) translateZ(-90px) scale(0.82) rotateY(-9deg)';
+                  transformStyle = isMobile
+                    ? 'translateX(34%) translateZ(-70px) scale(0.85) rotateY(-6deg)'
+                    : 'translateX(48%) translateZ(-90px) scale(0.82) rotateY(-9deg)';
                   zIndex = 20;
                   opacity = 0.65;
                   filter = 'brightness(0.72) saturate(0.85)';
                 } else if (isFarLeft) {
-                  transformStyle = 'translateX(-78%) translateZ(-160px) scale(0.68) rotateY(16deg)';
+                  transformStyle = isMobile
+                    ? 'translateX(-58%) translateZ(-120px) scale(0.72) rotateY(10deg)'
+                    : 'translateX(-78%) translateZ(-160px) scale(0.68) rotateY(16deg)';
                   zIndex = 10;
                   opacity = 0.2;
                   filter = 'blur(2px) brightness(0.5)';
                 } else if (isFarRight) {
-                  transformStyle = 'translateX(78%) translateZ(-160px) scale(0.68) rotateY(-16deg)';
+                  transformStyle = isMobile
+                    ? 'translateX(58%) translateZ(-120px) scale(0.72) rotateY(-10deg)'
+                    : 'translateX(78%) translateZ(-160px) scale(0.68) rotateY(-16deg)';
                   zIndex = 10;
                   opacity = 0.2;
                   filter = 'blur(2px) brightness(0.5)';
@@ -624,7 +642,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
                       opacity,
                       filter,
                     }}
-                    className={`avenix-showcase-card absolute top-1/2 -translate-y-1/2 w-[86%] sm:w-[80%] md:w-[480px] lg:w-[520px] aspect-[16/11] rounded-2xl md:rounded-3xl cursor-pointer ${
+                    className={`avenix-showcase-card absolute top-1/2 -translate-y-1/2 w-[90%] xs:w-[86%] sm:w-[80%] md:w-[480px] lg:w-[520px] aspect-[16/11] rounded-2xl md:rounded-3xl cursor-pointer ${
                       isCenter
                         ? 'avenix-card-glow-active ring-1 ring-cyan-400/40'
                         : 'avenix-card-glow-inactive ring-1 ring-white/10 hover:ring-cyan-400/30'
@@ -683,9 +701,9 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
                         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-transparent to-transparent opacity-80 pointer-events-none" />
 
                         {/* Top Metadata Badges */}
-                        <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <span className="px-3 py-1 rounded-full text-[10px] md:text-xs font-mono-tech tracking-wider uppercase font-semibold bg-black/60 backdrop-blur-md border border-cyan-400/40 text-cyan-300 flex items-center gap-1.5 shadow-[0_0_12px_rgba(56,189,248,0.3)]">
+                        <div className="absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4 z-20 flex items-center justify-between">
+                          <div className="flex items-center gap-1.5 sm:gap-2">
+                            <span className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] md:text-xs font-mono-tech tracking-wider uppercase font-semibold bg-black/60 backdrop-blur-md border border-cyan-400/40 text-cyan-300 flex items-center gap-1.5 shadow-[0_0_12px_rgba(56,189,248,0.3)]">
                               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                               {project.id === 'luxury-perfume-hero'
                                 ? 'FEATURED HERO'
@@ -701,24 +719,24 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
                             )}
                           </div>
 
-                          <div className="text-[11px] font-mono-tech text-white/75 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm border border-white/10">
+                          <div className="text-[10px] sm:text-[11px] font-mono-tech text-white/75 bg-black/40 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full backdrop-blur-sm border border-white/10">
                             {project.duration}
                           </div>
                         </div>
 
                         {/* Bottom Content Overlay */}
-                        <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-20 flex items-end justify-between gap-4">
-                          <div className="max-w-[80%]">
+                        <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 z-20 flex items-end justify-between gap-3 sm:gap-4">
+                          <div className="max-w-[76%] sm:max-w-[80%]">
                             <h3
-                              className={`font-display font-bold tracking-tight text-white mb-1.5 transition-colors ${
+                              className={`font-display font-bold tracking-tight text-white mb-1 transition-colors ${
                                 isCenter
-                                  ? 'text-xl sm:text-2xl md:text-3xl'
-                                  : 'text-lg sm:text-xl text-slate-200'
+                                  ? 'text-lg sm:text-2xl md:text-3xl'
+                                  : 'text-base sm:text-xl text-slate-200'
                               }`}
                             >
                               {project.title}
                             </h3>
-                            <div className="flex items-center gap-2 text-xs sm:text-sm text-cyan-300/90 font-mono-tech">
+                            <div className="flex items-center gap-2 text-[11px] sm:text-sm text-cyan-300/90 font-mono-tech">
                               <span>{project.category}</span>
                               <span className="opacity-50">·</span>
                               <span className="text-slate-400 hidden sm:inline">{project.client}</span>
@@ -731,14 +749,14 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
                               e.stopPropagation();
                               onSelectProject(project);
                             }}
-                            className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full border flex items-center justify-center transition-all duration-300 shadow-lg ${
+                            className={`w-9 h-9 sm:w-12 sm:h-12 rounded-full border flex items-center justify-center transition-all duration-300 shadow-lg shrink-0 ${
                               isCenter
                                 ? 'border-cyan-400/60 bg-black/60 text-cyan-300 hover:bg-cyan-500 hover:text-black hover:scale-110 shadow-cyan-500/25'
                                 : 'border-white/20 bg-black/40 text-white/60 hover:text-white'
                             }`}
                             title="Inspect project details"
                           >
-                            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
+                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-0.5" />
                           </div>
                         </div>
 
@@ -757,14 +775,14 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
             {/* ===================================================================
                 BOTTOM SHOWCASE CONTROLS: Arrow Buttons & Project Progress
                 =================================================================== */}
-            <div className="w-full mt-6 flex items-center justify-between px-2 sm:px-6">
+            <div className="w-full mt-5 sm:mt-6 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 px-1 sm:px-6">
               {/* Counter / Category indicator */}
-              <div className="flex items-center gap-3">
-                <span className="font-mono-tech text-xs tracking-widest text-cyan-400 font-bold">
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                <span className="font-mono-tech text-xs tracking-widest text-cyan-400 font-bold shrink-0">
                   {String(activeIndex + 1).padStart(2, '0')} / {String(projectsCount).padStart(2, '0')}
                 </span>
                 <span className="text-slate-600">|</span>
-                <span className="text-xs font-mono-tech text-slate-400 uppercase tracking-wider truncate max-w-[180px] sm:max-w-[280px]">
+                <span className="text-xs font-mono-tech text-slate-400 uppercase tracking-wider truncate max-w-[130px] xs:max-w-[180px] sm:max-w-[280px]">
                   {currentProject.title}
                 </span>
               </div>
@@ -786,30 +804,30 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
               </div>
 
               {/* Navigation Circular Arrow Buttons (matches reference screenshot) */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <button
                   onClick={handlePrev}
                   disabled={activeIndex === 0}
-                  className={`w-11 h-11 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                  className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all duration-300 ${
                     activeIndex === 0
                       ? 'border-white/10 text-white/20 cursor-not-allowed'
                       : 'border-white/25 text-white hover:border-cyan-400 hover:text-cyan-400 hover:shadow-[0_0_15px_rgba(56,189,248,0.35)] active:scale-95 bg-slate-900/60'
                   }`}
                   aria-label="Previous project"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
                 <button
                   onClick={handleNext}
                   disabled={activeIndex === projectsCount - 1}
-                  className={`w-11 h-11 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                  className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all duration-300 ${
                     activeIndex === projectsCount - 1
                       ? 'border-white/10 text-white/20 cursor-not-allowed'
                       : 'border-white/25 text-white hover:border-cyan-400 hover:text-cyan-400 hover:shadow-[0_0_15px_rgba(56,189,248,0.35)] active:scale-95 bg-slate-900/60'
                   }`}
                   aria-label="Next project"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
@@ -846,8 +864,8 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 items-center text-center md:text-left divide-y md:divide-y-0 md:divide-x divide-white/10">
             {/* Metric 1 */}
-            <div className="flex items-center gap-4 justify-center md:justify-start pt-4 md:pt-0">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+            <div className="flex items-center gap-4 justify-start">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.2)] shrink-0">
                 <Tv className="w-6 h-6" />
               </div>
               <div>
@@ -864,8 +882,8 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
             </div>
 
             {/* Metric 2 */}
-            <div className="flex items-center gap-4 justify-center md:justify-start pt-4 md:pt-0 md:pl-8">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+            <div className="flex items-center gap-4 justify-start pt-4 md:pt-0 md:pl-6 lg:pl-8">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.2)] shrink-0">
                 <Sparkles className="w-6 h-6" />
               </div>
               <div>
@@ -882,8 +900,8 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
             </div>
 
             {/* Metric 3 */}
-            <div className="flex items-center gap-4 justify-center md:justify-start pt-4 md:pt-0 md:pl-8">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+            <div className="flex items-center gap-4 justify-start pt-4 md:pt-0 md:pl-6 lg:pl-8">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.2)] shrink-0">
                 <Globe className="w-6 h-6" />
               </div>
               <div>
@@ -900,8 +918,8 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectProject }) =
             </div>
 
             {/* Metric 4 */}
-            <div className="flex items-center gap-4 justify-center md:justify-start pt-4 md:pt-0 md:pl-8">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+            <div className="flex items-center gap-4 justify-start pt-4 md:pt-0 md:pl-6 lg:pl-8">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.2)] shrink-0">
                 <InfinityIcon className="w-6 h-6" />
               </div>
               <div>

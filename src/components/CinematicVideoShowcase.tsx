@@ -325,14 +325,14 @@ export const CinematicVideoShowcase: React.FC = () => {
           SECTION HEADER: "Meet The Mind Behind Avenix"
           ===================================================================== */}
       <div
-        className={`max-w-5xl mx-auto px-6 md:px-10 mb-12 md:mb-14 text-center relative z-10 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`max-w-5xl mx-auto px-6 md:px-10 mb-10 sm:mb-12 md:mb-14 text-center relative z-10 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isSectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-3 mb-4">
+        <div className="inline-flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
           <span
-            className="w-7 h-[2px] rounded-full"
+            className="w-5 sm:w-7 h-[2px] rounded-full"
             style={{
               backgroundColor: theme === 'dark' ? '#38BDF8' : '#2A8CFF',
               boxShadow:
@@ -342,13 +342,13 @@ export const CinematicVideoShowcase: React.FC = () => {
             }}
           />
           <span
-            className="text-xs uppercase tracking-[0.28em] font-semibold font-mono-tech"
+            className="text-[11px] sm:text-xs uppercase tracking-[0.24em] sm:tracking-[0.28em] font-semibold font-mono-tech"
             style={{ color: theme === 'dark' ? '#7DD3FC' : '#1D74DF' }}
           >
             CREATOR INTRODUCTION
           </span>
           <span
-            className="w-7 h-[2px] rounded-full"
+            className="w-5 sm:w-7 h-[2px] rounded-full"
             style={{
               backgroundColor: theme === 'dark' ? '#38BDF8' : '#2A8CFF',
               boxShadow:
@@ -361,7 +361,7 @@ export const CinematicVideoShowcase: React.FC = () => {
 
         {/* Main Title */}
         <h2
-          className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.08]"
+          className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1]"
           style={{ color: theme === 'dark' ? '#FFFFFF' : '#111827' }}
         >
           Meet The Mind{' '}
@@ -380,7 +380,7 @@ export const CinematicVideoShowcase: React.FC = () => {
 
         {/* Subtitle */}
         <p
-          className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mt-4 font-normal leading-relaxed"
+          className="text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mt-3 sm:mt-4 font-normal leading-relaxed"
           style={{ color: theme === 'dark' ? '#A7ADB8' : '#334155' }}
         >
           A short introduction to my creative process, vision, and the future of AI-powered visual
@@ -727,7 +727,7 @@ export const CinematicVideoShowcase: React.FC = () => {
                         value={isMuted ? 0 : volume}
                         onChange={handleVolumeChange}
                         aria-label="Volume control"
-                        className="w-16 sm:w-22 h-1.5 accent-sky-400 bg-white/20 rounded-lg cursor-pointer"
+                        className="w-14 sm:w-22 h-1.5 accent-sky-400 bg-white/20 rounded-lg cursor-pointer"
                       />
                       <span className="hidden md:inline-block w-8 text-right text-[10px] tabular-nums text-sky-200/85">
                         {isMuted ? '0%' : `${Math.round(volume * 100)}%`}

@@ -83,7 +83,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
             </h2>
 
             <p
-              className="text-base sm:text-lg font-normal leading-relaxed mb-8"
+              className="text-sm sm:text-lg font-normal leading-relaxed mb-8"
               style={{ color: theme === 'dark' ? '#A7ADB8' : '#334155' }}
             >
               Whether you need a flagship brand commercial, synthetic product visuals, or complete AI creative direction, let's explore what's possible.
@@ -104,10 +104,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
               >
                 Direct Correspondence
               </div>
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center justify-between gap-3 sm:gap-4">
                 <a
                   href="mailto:olafimihangoodluck@gmail.com"
-                  className={`font-mono-tech text-sm sm:text-base font-semibold break-all transition-colors ${
+                  className={`font-mono-tech text-xs sm:text-base font-semibold break-all transition-colors ${
                     theme === 'dark'
                       ? 'text-blue-500 hover:text-blue-400'
                       : 'text-[#1D74DF] hover:text-[#2A8CFF]'

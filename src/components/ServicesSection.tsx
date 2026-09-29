@@ -154,7 +154,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquireServi
 
   // Progressive card entrance reveal (1 -> 2 -> 3 -> 4 -> 5)
   const [revealedCount, setRevealedCount] = useState(0);
-  const [hasEntered, setHasEntered] = useState(false);
+  const [hasEntered, setHasEntered] = useState(true);
 
   // Continuous horizontal scroll progress (0.0 = Card 1 ... 4.0 = Card 5)
   const targetProgressRef = useRef<number>(0);
@@ -421,7 +421,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquireServi
       }}
     >
       {/* Sticky Pinned Showcase Stage — Locks section in view while vertical scroll drives horizontal card movement (Card 1 -> Card 5) */}
-      <div className="sticky top-0 h-screen h-[100dvh] flex flex-col justify-center py-6 sm:py-8 lg:py-10 overflow-hidden">
+      <div
+        className="sticky top-0 h-screen h-[100dvh] flex flex-col justify-between pt-20 sm:pt-24 lg:pt-[84px] pb-3 sm:pb-5 overflow-x-clip"
+        style={{ overflowX: 'clip', overflowY: 'visible' }}
+      >
         {/* Atmospheric Volumetric Blue Illumination & Floating Energy Particles */}
         {theme === 'dark' && (
           <>
@@ -479,13 +482,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquireServi
           ))}
         </div>
 
-        <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 md:px-10 relative z-10 flex flex-col justify-between">
+        <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 md:px-10 relative z-10 flex flex-col justify-between flex-1 min-h-0">
           {/* =================================================================
               SECTION HEADER: AVENIX Emblem, Eyebrow, Title & Subtitle
               ================================================================= */}
           <div
-            className={`max-w-4xl mx-auto text-center mb-4 sm:mb-6 lg:mb-7 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              hasEntered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            className={`max-w-4xl w-full mx-auto text-center mb-3 sm:mb-4 lg:mb-5 relative z-20 shrink-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              hasEntered ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0'
             }`}
           >
             {/* Subtle Centered AVENIX Brand Mark */}
@@ -498,9 +501,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquireServi
             </div>
 
             {/* Eyebrow: — SOCIAL PROOF — */}
-            <div className="inline-flex items-center gap-3.5 mb-2.5">
+            <div className="inline-flex items-center justify-center gap-3.5 mb-2 sm:mb-2.5">
               <span
-                className="w-8 sm:w-10 h-[1.5px] rounded-full"
+                className="w-8 sm:w-10 h-[1.5px] rounded-full shrink-0"
                 style={{
                   background:
                     theme === 'dark'
@@ -509,13 +512,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquireServi
                 }}
               />
               <span
-                className="text-[11px] sm:text-xs uppercase tracking-[0.32em] font-semibold font-mono-tech"
+                className="text-[11px] sm:text-xs uppercase tracking-[0.32em] font-semibold font-mono-tech whitespace-nowrap"
                 style={{ color: theme === 'dark' ? '#7DD3FC' : '#1D74DF' }}
               >
                 SOCIAL PROOF
               </span>
               <span
-                className="w-8 sm:w-10 h-[1.5px] rounded-full"
+                className="w-8 sm:w-10 h-[1.5px] rounded-full shrink-0"
                 style={{
                   background:
                     theme === 'dark'
@@ -527,7 +530,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquireServi
 
             {/* Main Headline */}
             <h2
-              className="font-display text-2xl sm:text-4xl md:text-[44px] xl:text-[50px] font-extrabold tracking-tight leading-[1.08]"
+              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[48px] font-extrabold tracking-tight leading-[1.12]"
               style={{ color: theme === 'dark' ? '#FFFFFF' : '#111827' }}
             >
               Trusted By Visionaries.{' '}
@@ -564,7 +567,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquireServi
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
-            className="relative w-full h-[340px] sm:h-[370px] lg:h-[395px] xl:h-[415px] flex items-center justify-center overflow-visible select-none"
+            className="relative w-full h-[320px] sm:h-[350px] lg:h-[370px] xl:h-[385px] flex items-center justify-center overflow-visible select-none my-auto"
           >
             {SOCIAL_PROOF_CARDS.map((card, idx) => {
               const isRevealed = revealedCount >= idx + 1;
@@ -803,7 +806,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquireServi
               CAROUSEL / SPOTLIGHT NAVIGATION CONTROLS (Reference-Inspired)
               ================================================================= */}
           <div
-            className={`mt-3 sm:mt-4 flex items-center justify-center gap-4 transition-all duration-700 ${
+            className={`mt-2 sm:mt-2.5 flex items-center justify-center gap-4 shrink-0 transition-all duration-700 ${
               revealedCount >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
@@ -861,7 +864,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquireServi
               TRUST METRICS BAR (Below Testimonial Cards)
               ================================================================= */}
           <div
-            className={`mt-4 sm:mt-6 rounded-[22px] border backdrop-blur-xl px-5 py-4 sm:px-7 sm:py-5 relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            className={`mt-2.5 sm:mt-3.5 shrink-0 rounded-[22px] border backdrop-blur-xl px-5 py-3 sm:px-7 sm:py-3.5 relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               revealedCount >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             } ${
               theme === 'dark'

@@ -25,7 +25,7 @@ export const MarqueeStatement: React.FC = () => {
     >
       {/* Edge gradient masks for seamless fade */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+        className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 z-10 pointer-events-none"
         style={{
           background: theme === 'dark'
             ? 'linear-gradient(to right, #060D1A, transparent)'
@@ -33,7 +33,7 @@ export const MarqueeStatement: React.FC = () => {
         }}
       />
       <div
-        className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+        className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 z-10 pointer-events-none"
         style={{
           background: theme === 'dark'
             ? 'linear-gradient(to left, #060D1A, transparent)'

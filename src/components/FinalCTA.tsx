@@ -66,6 +66,7 @@ export const FinalCTA: React.FC = () => {
   return (
     <section
       ref={sectionRef}
+      id="final-cta"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="relative py-28 md:py-36 overflow-hidden border-t bg-[#020712]"
@@ -207,7 +208,7 @@ export const FinalCTA: React.FC = () => {
       <div className="max-w-5xl mx-auto px-5 sm:px-6 md:px-10 relative z-10">
         {/* Premium Futuristic Glassmorphic Conversion Container */}
         <div
-          className={`group/closer relative rounded-[28px] sm:rounded-[36px] px-6 py-14 sm:px-12 sm:py-18 md:px-16 md:py-20 text-center overflow-hidden backdrop-blur-2xl transition-all duration-700 ease-out ${
+          className={`group/closer relative rounded-[26px] sm:rounded-[36px] px-6 py-12 sm:px-12 sm:py-18 md:px-16 md:py-20 text-center overflow-hidden backdrop-blur-2xl transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
           style={{
@@ -293,79 +294,36 @@ export const FinalCTA: React.FC = () => {
             className="pointer-events-none absolute inset-y-12 right-5 w-px bg-gradient-to-b from-transparent via-sky-400/25 to-transparent hidden sm:block"
           />
 
-          {/* Eyebrow Indicator with Luminous Divider Lines */}
-          <div
-            className={`relative z-10 inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-sky-500/15 border border-sky-400/40 backdrop-blur-md shadow-[0_0_24px_rgba(56,189,248,0.25)] mb-7 transition-all duration-700 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-            style={{ transitionDelay: '100ms' }}
-          >
-            <span
-              aria-hidden="true"
-              className="w-6 h-[1px] bg-gradient-to-r from-transparent to-sky-300 hidden sm:inline-block"
-            />
-            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse shadow-[0_0_10px_#38BDF8]" />
-            <span className="text-xs uppercase tracking-[0.28em] font-semibold font-mono-tech text-sky-300">
-              Initiate Collaboration
-            </span>
-            <span
-              aria-hidden="true"
-              className="w-6 h-[1px] bg-gradient-to-l from-transparent to-sky-300 hidden sm:inline-block"
-            />
+          {/* Small Top Luminous Center Pill Indicator */}
+          <div className="relative z-10 flex items-center justify-center mb-6 sm:mb-8">
+            <div className="h-1 w-16 sm:w-20 rounded-full bg-gradient-to-r from-transparent via-sky-400 to-transparent shadow-[0_0_12px_#38BDF8]" />
           </div>
 
-          {/* Main Headline */}
+          {/* Main Huge Iconic Headline from Reference Image: "Visual." */}
           <h2
-            className={`relative z-10 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.06] text-white mb-6 transition-all duration-700 ease-out ${
+            className={`relative z-10 font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight leading-[1] text-white mb-8 sm:mb-12 transition-all duration-700 ease-out ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
             style={{
               textWrap: 'balance',
               transitionDelay: '180ms',
-              textShadow: '0 8px 32px rgba(0, 0, 0, 0.65)',
+              textShadow: '0 8px 40px rgba(0, 0, 0, 0.75), 0 0 45px rgba(56, 189, 248, 0.35)',
             }}
           >
-            Have An Idea? <br />
-            <span
-              className="bg-gradient-to-r from-[#60A5FA] via-[#38BDF8] to-[#BAE6FD] bg-clip-text text-transparent"
-              style={{
-                filter: 'drop-shadow(0 0 28px rgba(56, 189, 248, 0.45))',
-              }}
-            >
-              Let's Turn It Into A Visual.
-            </span>
+            Visual.
           </h2>
 
-          {/* Thin Luminous Center Divider Line */}
+          {/* Primary & Secondary Action Buttons Matching Reference Image */}
           <div
-            aria-hidden="true"
-            className={`relative z-10 mx-auto mb-6 h-[1.5px] w-28 sm:w-36 rounded-full bg-gradient-to-r from-transparent via-sky-400/85 to-transparent shadow-[0_0_14px_rgba(56,189,248,0.85)] transition-all duration-700 ${
-              isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-50'
-            }`}
-            style={{ transitionDelay: '240ms' }}
-          />
-
-          {/* Subtext with High Contrast & Sharp Rendering */}
-          <p
-            className={`relative z-10 text-lg sm:text-xl md:text-[22px] font-normal max-w-2xl mx-auto mb-11 leading-relaxed text-slate-100/95 tracking-[0.01em] antialiased transition-all duration-700 ease-out ${
+            className={`relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 sm:gap-5 transition-all duration-700 ease-out ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
             style={{ transitionDelay: '300ms' }}
           >
-            From concept to cinematic final frame, let's create something worth watching.
-          </p>
-
-          {/* Primary & Secondary Action Buttons */}
-          <div
-            className={`relative z-10 flex flex-wrap items-center justify-center gap-4 sm:gap-5 transition-all duration-700 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-            style={{ transitionDelay: '380ms' }}
-          >
-            {/* Primary Button: "Start A Project" */}
+            {/* Primary Button: "START A PROJECT ->" */}
             <button
-              onClick={() => scrollTo('contact')}
-              className="group/primary relative px-8 sm:px-9 py-4 sm:py-4.5 rounded-2xl font-mono-tech text-xs sm:text-sm uppercase tracking-[0.18em] font-bold text-[#031126] transition-all duration-300 hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2.5 cursor-pointer"
+              onClick={() => scrollTo('vision-reality')}
+              className="group/primary relative w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-4.5 rounded-full font-mono-tech text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-[#031126] transition-all duration-300 hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-2.5 cursor-pointer"
               style={{
                 background:
                   'linear-gradient(90deg, #7DD3FC 0%, #38BDF8 50%, #BAE6FD 100%)',
@@ -373,21 +331,16 @@ export const FinalCTA: React.FC = () => {
                   '0 14px 36px rgba(22, 119, 255, 0.48), 0 0 32px rgba(56, 189, 248, 0.65), inset 0 1px 2px rgba(255, 255, 255, 0.9)',
               }}
             >
-              <span>Start A Project</span>
-              <span className="w-6 h-6 rounded-full bg-[#031126]/15 flex items-center justify-center transition-transform duration-300 group-hover/primary:translate-x-0.5 group-hover/primary:-translate-y-0.5">
-                <ArrowUpRight className="w-4 h-4 text-[#031126] transition-transform duration-300 group-hover/primary:translate-x-0.5 group-hover/primary:-translate-y-0.5" />
-              </span>
+              <span>START A PROJECT</span>
+              <ArrowUpRight className="w-4 h-4 text-[#031126] transition-transform duration-300 group-hover/primary:translate-x-0.5 group-hover/primary:-translate-y-0.5" />
             </button>
 
-            {/* Secondary Button: "View My Work" */}
+            {/* Secondary Button: "VIEW PORTFOLIO" */}
             <button
               onClick={() => scrollTo('work')}
-              className="group/secondary relative px-8 sm:px-9 py-4 sm:py-4.5 rounded-2xl font-mono-tech text-xs sm:text-sm uppercase tracking-[0.18em] font-semibold text-white bg-[#091A38]/75 hover:bg-sky-500/20 border border-sky-400/50 hover:border-sky-300 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2.5 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.55),0_0_22px_rgba(22,119,255,0.25),inset_0_1px_1px_rgba(255,255,255,0.18)] hover:shadow-[0_14px_38px_rgba(0,0,0,0.7),0_0_34px_rgba(56,189,248,0.55)]"
+              className="group/secondary relative w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-4.5 rounded-full font-mono-tech text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold text-white bg-[#091A38]/85 hover:bg-sky-500/20 border border-sky-400/50 hover:border-sky-300 backdrop-blur-xl transition-all duration-300 hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-2.5 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.55),0_0_22px_rgba(22,119,255,0.25)]"
             >
-              <span>View My Work</span>
-              <span className="w-6 h-6 rounded-full bg-sky-400/15 border border-sky-300/40 flex items-center justify-center transition-all duration-300 group-hover/secondary:bg-sky-400/25 group-hover/secondary:border-sky-200">
-                <ArrowDown className="w-3.5 h-3.5 text-sky-300 transition-transform duration-300 group-hover/secondary:translate-y-0.5" />
-              </span>
+              <span>VIEW PORTFOLIO</span>
             </button>
           </div>
         </div>

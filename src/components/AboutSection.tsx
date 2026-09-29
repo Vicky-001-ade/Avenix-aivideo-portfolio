@@ -122,7 +122,7 @@ export const AboutSection: React.FC = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border mb-5 backdrop-blur-md bg-sky-500/[0.07] border-sky-400/30 shadow-[0_0_20px_rgba(56,189,248,0.18)]">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border mb-4 sm:mb-5 backdrop-blur-md bg-sky-500/[0.07] border-sky-400/30 shadow-[0_0_20px_rgba(56,189,248,0.18)]">
             <img
               src={avenixLogo}
               alt=""
@@ -138,7 +138,7 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <h2
-            className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.08]"
+            className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1]"
             style={{ color: theme === 'dark' ? '#FFFFFF' : '#0F172A' }}
           >
             Meet The{' '}
@@ -154,7 +154,7 @@ export const AboutSection: React.FC = () => {
           </h2>
 
           <p
-            className="mt-4 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto"
+            className="mt-4 text-sm sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto"
             style={{ color: theme === 'dark' ? '#CBD5E1' : '#475569' }}
           >
             The creator behind AVENIX and the vision driving cinematic AI storytelling.

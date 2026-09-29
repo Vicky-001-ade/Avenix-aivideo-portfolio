@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
+import { NavigationProvider, useNavigation } from './context/NavigationContext';
 import { CustomCursor } from './components/CustomCursor';
 import { DarkThemeAmbientBackground } from './components/DarkThemeAmbientBackground';
 import { LightThemeAmbientBackground } from './components/LightThemeAmbientBackground';
@@ -16,11 +17,11 @@ import { MarqueeStatement } from './components/MarqueeStatement';
 import { FeaturedWork } from './components/FeaturedWork';
 import { CinematicVideoShowcase } from './components/CinematicVideoShowcase';
 import { AIVisualsGallery } from './components/AIVisualsGallery';
-import { ServicesSection } from './components/ServicesSection';
 import { ProcessSection } from './components/ProcessSection';
 import { AboutSection } from './components/AboutSection';
 import { ToolsTechnology } from './components/ToolsTechnology';
-import { TestimonialsSection } from './components/TestimonialsSection';
+import { SocialProofSection } from './components/SocialProofSection';
+import { VisionToRealitySection } from './components/VisionToRealitySection';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
@@ -28,7 +29,8 @@ import { VisualLightboxModal } from './components/VisualLightboxModal';
 import { Project, AIVisual } from './types';
 import { FEATURED_PROJECTS } from './data/portfolioData';
 
-export default function App() {
+function AppContent() {
+  const { currentPage } = useNavigation();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedVisual, setSelectedVisual] = useState<AIVisual | null>(null);
 
@@ -47,7 +49,7 @@ export default function App() {
   };
 
   return (
-    <ThemeProvider>
+    <>
       {/* Full-Screen Cinematic AVENIX Splash / Loading Screen */}
       <AvenixSplashScreen />
 
@@ -65,41 +67,41 @@ export default function App() {
 
         {/* Main page content sections */}
         <main className="relative z-10">
-          {/* Hero */}
+          {/* 1. Hero Section */}
           <HeroSection onOpenVideoReel={handleOpenVideoReel} />
 
           {/* Scrolling brand statement marquee */}
           <MarqueeStatement />
 
-          {/* Selected Work (Editorial Asymmetric Bento Masonry) */}
+          {/* 2. Selected Work */}
           <FeaturedWork onSelectProject={(project) => setSelectedProject(project)} />
 
-          {/* Dedicated Cinematic Video Showcase */}
+          {/* 3. Introduction Video Section ("Meet The Mind Behind Avenix") */}
           <CinematicVideoShowcase />
 
-          {/* AI Visuals Gallery (Separate from video work, varied aspect ratios) */}
+          {/* 4. AI Visuals Section */}
           <AIVisualsGallery onSelectVisual={(visual) => setSelectedVisual(visual)} />
 
-          {/* Services: What I Create */}
-          <ServicesSection onInquireService={handleInquireService} />
+          {/* 5. Social Proof Section ("Trusted by Visionaries. Powered by Imagination.") */}
+          <SocialProofSection />
 
-          {/* Process: From Concept to Screen */}
+          {/* 6. From Concept To Screen ("Process") */}
           <ProcessSection />
 
-          {/* About Section: AI Is The Tool. Story Is The Point. */}
+          {/* 7. Meet The Founder */}
           <AboutSection />
 
-          {/* Tools & Technology: Creative Instruments */}
+          {/* 8. Pricing Section ("Flexible Pricing For Every Vision") */}
           <ToolsTechnology />
 
-          {/* Testimonials */}
-          <TestimonialsSection />
+          {/* 9. Ready To Turn Your Vision Into Cinematic AI Reality Section */}
+          <VisionToRealitySection />
 
-          {/* Dramatic Final Call-To-Action */}
+          {/* 10. Final CTA Section ("Visual.") */}
           <FinalCTA />
         </main>
 
-        {/* Footer */}
+        {/* 11. Footer Section */}
         <Footer />
 
         {/* Modals */}
@@ -115,6 +117,16 @@ export default function App() {
           onClose={() => setSelectedVisual(null)}
         />
       </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <NavigationProvider>
+        <AppContent />
+      </NavigationProvider>
     </ThemeProvider>
   );
 }

@@ -246,7 +246,7 @@ export const AIVisualsGallery: React.FC<AIVisualsGalleryProps> = ({ onSelectVisu
           </div>
 
           {/* Bottom Content Lockup: Title, Dot-Separated Tags & Glassmorphic Arrow Circle */}
-          <div className="absolute inset-x-0 bottom-0 p-5 z-10 flex items-end justify-between gap-3">
+          <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-10 flex items-end justify-between gap-3">
             <div className="min-w-0">
               <h3 className="font-display text-lg sm:text-[19px] font-bold text-white tracking-tight leading-snug group-hover:text-sky-300 transition-colors duration-300 truncate">
                 {group.title}
@@ -305,7 +305,7 @@ export const AIVisualsGallery: React.FC<AIVisualsGalleryProps> = ({ onSelectVisu
         {/* Reference-Inspired Editorial Section Header */}
         <div className="max-w-2xl mb-10 md:mb-12">
           {/* Eyebrow with Horizontal Accent Line */}
-          <div className="flex items-center gap-3.5 mb-4">
+          <div className="flex items-center gap-3.5 mb-3 sm:mb-4">
             <span
               className="w-8 h-[2px] rounded-full"
               style={{
@@ -317,7 +317,7 @@ export const AIVisualsGallery: React.FC<AIVisualsGalleryProps> = ({ onSelectVisu
               }}
             />
             <span
-              className="text-xs uppercase tracking-[0.28em] font-semibold font-mono-tech"
+              className="text-[11px] sm:text-xs uppercase tracking-[0.28em] font-semibold font-mono-tech"
               style={{ color: theme === 'dark' ? '#7DD3FC' : '#1D74DF' }}
             >
               AI VISUALS
@@ -326,7 +326,7 @@ export const AIVisualsGallery: React.FC<AIVisualsGalleryProps> = ({ onSelectVisu
 
           {/* Editorial Headline */}
           <h2
-            className="font-display text-4xl sm:text-5xl md:text-[54px] font-extrabold tracking-tight leading-[1.08]"
+            className="font-display text-4xl sm:text-5xl md:text-[54px] font-extrabold tracking-tight leading-[1.1]"
             style={{ color: theme === 'dark' ? '#FFFFFF' : '#111827' }}
           >
             Imagination into Stunning{' '}
@@ -344,7 +344,7 @@ export const AIVisualsGallery: React.FC<AIVisualsGalleryProps> = ({ onSelectVisu
           </h2>
 
           <p
-            className="text-base sm:text-lg max-w-xl mt-4 font-normal leading-relaxed"
+            className="text-sm sm:text-lg max-w-xl mt-4 font-normal leading-relaxed"
             style={{ color: theme === 'dark' ? '#A7ADB8' : '#334155' }}
           >
             From cinematic scenes to futuristic concepts, our AI visuals bring ideas to life with
@@ -431,7 +431,7 @@ export const AIVisualsGallery: React.FC<AIVisualsGalleryProps> = ({ onSelectVisu
               </div>
 
               {/* Bottom Hero Caption & Circular Arrow Button */}
-              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 md:p-8 z-10 flex items-end justify-between gap-4">
+              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-7 md:p-8 z-10 flex items-end justify-between gap-3 sm:gap-4">
                 <div>
                   <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight group-hover:text-sky-200 transition-colors duration-300">
                     {CENTER_FEATURED_VISUAL.title}

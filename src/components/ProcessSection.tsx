@@ -141,7 +141,7 @@ export const ProcessSection: React.FC = () => {
         ))}
       </div>
 
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 relative z-10">
+      <div className="max-w-[1380px] mx-auto px-6 md:px-10 relative z-10">
         {/* ===================================================================
             SECTION HEADER: AVENIX Emblem, Eyebrow, Title & Subtitle
             =================================================================== */}
@@ -189,7 +189,7 @@ export const ProcessSection: React.FC = () => {
 
           {/* Main Section Title */}
           <h2
-            className="font-display text-3xl sm:text-5xl md:text-[54px] font-extrabold tracking-tight leading-[1.08]"
+            className="font-display text-4xl sm:text-5xl md:text-[54px] font-extrabold tracking-tight leading-[1.08]"
             style={{ color: theme === 'dark' ? '#FFFFFF' : '#111827' }}
           >
             From{' '}
@@ -275,7 +275,7 @@ export const ProcessSection: React.FC = () => {
               transitionDuration: '760ms',
               transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
             }}
-            className={`group relative rounded-[26px] p-6 sm:p-7 backdrop-blur-xl border flex flex-col justify-between overflow-hidden transition-all will-change-[transform,opacity] ${
+            className={`group relative rounded-[26px] p-5 sm:p-7 backdrop-blur-xl border flex flex-col justify-between overflow-hidden transition-all will-change-[transform,opacity] ${
               revealedStepCount >= 1
                 ? 'opacity-100 translate-y-0 scale-100'
                 : 'opacity-0 translate-y-12 scale-[0.95]'
@@ -426,7 +426,7 @@ export const ProcessSection: React.FC = () => {
               transitionDuration: '760ms',
               transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
             }}
-            className={`group relative rounded-[26px] p-6 sm:p-7 backdrop-blur-xl border flex flex-col justify-between overflow-hidden transition-all will-change-[transform,opacity] ${
+            className={`group relative rounded-[26px] p-5 sm:p-7 backdrop-blur-xl border flex flex-col justify-between overflow-hidden transition-all will-change-[transform,opacity] ${
               revealedStepCount >= 2
                 ? 'opacity-100 translate-y-0 scale-100'
                 : 'opacity-0 translate-y-12 scale-[0.95]'
@@ -581,7 +581,7 @@ export const ProcessSection: React.FC = () => {
               transitionDuration: '760ms',
               transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
             }}
-            className={`group relative rounded-[26px] p-6 sm:p-7 backdrop-blur-xl border flex flex-col justify-between overflow-hidden transition-all will-change-[transform,opacity] md:col-span-2 lg:col-span-1 ${
+            className={`group relative rounded-[26px] p-5 sm:p-7 backdrop-blur-xl border flex flex-col justify-between overflow-hidden transition-all will-change-[transform,opacity] md:col-span-2 lg:col-span-1 ${
               revealedStepCount >= 3
                 ? 'opacity-100 translate-y-0 scale-100'
                 : 'opacity-0 translate-y-12 scale-[0.95]'

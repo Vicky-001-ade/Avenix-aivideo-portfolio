@@ -54,7 +54,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 backdrop-blur-2xl transition-all duration-300 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 md:p-10 backdrop-blur-2xl transition-all duration-300 overflow-y-auto"
       style={{
         backgroundColor: theme === 'dark' ? 'rgba(5, 7, 11, 0.88)' : 'rgba(247, 250, 253, 0.92)',
       }}
@@ -63,7 +63,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
       <div className="fixed inset-0" onClick={onClose} />
 
       <div
-        className="relative w-full max-w-5xl rounded-3xl border shadow-2xl overflow-hidden z-10 my-auto"
+        className="relative w-full max-w-5xl rounded-2xl sm:rounded-3xl border shadow-2xl overflow-hidden z-10 my-auto"
         style={{
           backgroundColor: theme === 'dark' ? '#0B1019' : '#FCFDFE',
           borderColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.12)' : '#DCE5F0',
@@ -71,7 +71,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
       >
         {/* Header bar */}
         <div
-          className="p-5 md:px-8 border-b flex items-center justify-between"
+          className="p-3.5 sm:p-5 md:px-8 border-b flex items-center justify-between"
           style={{
             borderColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.08)' : '#DCE5F0',
           }}
@@ -156,7 +156,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         </div>
 
         {/* Project Context & Metadata */}
-        <div className="p-6 md:p-10 space-y-8">
+        <div className="p-4 sm:p-6 md:p-10 space-y-6 sm:space-y-8">
           <div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
               <h2

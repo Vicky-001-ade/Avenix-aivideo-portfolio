@@ -592,21 +592,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVideoReel }) => 
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-12 xl:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-12 xl:gap-16 items-center">
           {/* Left Column: Typography & Intent */}
           <div
             ref={heroTextStageRef}
             className="hero-3d-stage lg:col-span-7 flex flex-col justify-center"
           >
             {/* Eyebrow */}
-            <div className="hero-eyebrow-anim flex items-center gap-2.5 mb-5 sm:mb-6">
+            <div className="hero-eyebrow-anim flex items-center gap-2 mb-4 sm:mb-6">
               <span
-                className={`w-2 h-2 rounded-full animate-pulse ${
+                className={`w-2 h-2 rounded-full animate-pulse shrink-0 ${
                   theme === 'dark' ? 'bg-blue-500' : 'bg-[#2A8CFF]'
                 }`}
               />
               <span
-                className="text-xs uppercase tracking-[0.24em] font-semibold font-mono-tech"
+                className="text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em] font-semibold font-mono-tech"
                 style={{ color: theme === 'dark' ? '#4DA3FF' : '#1D74DF' }}
               >
                 AI VIDEO CREATOR • AI VISUAL DESIGNER
@@ -616,7 +616,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVideoReel }) => 
             {/* Main Headline - Slightly reduced, refined curvy futuristic Sora/Outfit letterforms + 3D floating depth plane */}
             <div className="hero-3d-heading-plane">
               <h1
-                className="hero-curvy-heading text-[1.85rem] sm:text-4xl md:text-[2.75rem] lg:text-[2.85rem] xl:text-[3.25rem] font-semibold mb-6 sm:mb-8 transition-colors"
+                className="hero-curvy-heading text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[2.85rem] xl:text-[3.25rem] font-semibold mb-6 sm:mb-8 transition-colors break-words"
                 style={{
                   textWrap: 'balance',
                   color: theme === 'dark' ? '#FFFFFF' : '#111827',
@@ -695,7 +695,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVideoReel }) => 
             {/* Supporting Statement - Secondary 3D floating depth plane */}
             <div className="hero-3d-subtext-plane">
               <p
-                className="hero-subtext-anim text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mb-8 sm:mb-10"
+                className="hero-subtext-anim text-sm sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mb-7 sm:mb-10"
                 style={{
                   color: theme === 'dark' ? '#A7ADB8' : '#334155',
                 }}
@@ -705,11 +705,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVideoReel }) => 
             </div>
 
             {/* CTAs */}
-            <div className="hero-cta-anim flex flex-wrap items-center gap-3.5 sm:gap-4">
+            <div className="hero-cta-anim flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <button
                 onClick={() => scrollTo('work')}
                 data-cursor="view"
-                className={`px-6 sm:px-7 py-3.5 rounded-xl font-mono-tech text-xs uppercase tracking-wider font-semibold text-white transition-all duration-200 active:scale-95 flex items-center gap-2 group ${
+                className={`w-full sm:w-auto px-6 sm:px-7 py-3.5 rounded-xl font-mono-tech text-xs uppercase tracking-wider font-semibold text-white transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 group ${
                   theme === 'dark'
                     ? 'bg-blue-600 hover:bg-blue-500 shadow-[0_0_30px_rgba(22,119,255,0.4)] hover:shadow-[0_0_40px_rgba(22,119,255,0.7)]'
                     : 'bg-[#2A8CFF] hover:bg-[#3B97FF] shadow-[0_10px_28px_rgba(42,140,255,0.30)] hover:shadow-[0_12px_34px_rgba(42,140,255,0.42)]'
@@ -721,7 +721,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVideoReel }) => 
 
               <button
                 onClick={() => scrollTo('contact')}
-                className={`px-6 sm:px-7 py-3.5 rounded-xl font-mono-tech text-xs uppercase tracking-wider font-semibold border transition-all duration-200 active:scale-95 flex items-center gap-2 ${
+                className={`w-full sm:w-auto px-6 sm:px-7 py-3.5 rounded-xl font-mono-tech text-xs uppercase tracking-wider font-semibold border transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 ${
                   theme === 'dark'
                     ? 'border-white/15 bg-white/5 hover:bg-white/10 text-white hover:border-blue-400/40'
                     : 'border-[#CBD8E8] bg-white/90 hover:bg-[#F2F7FD] text-[#111827] hover:border-[#2A8CFF]/60 shadow-xs'
@@ -734,14 +734,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVideoReel }) => 
               <button
                 onClick={onOpenVideoReel}
                 data-cursor="play"
-                className={`inline-flex items-center gap-2 px-3 py-3 text-xs font-mono-tech uppercase tracking-wider font-semibold transition-colors ${
+                className={`inline-flex items-center justify-center gap-2 px-3 py-3 text-xs font-mono-tech uppercase tracking-wider font-semibold transition-colors ${
                   theme === 'dark'
                     ? 'text-blue-500 hover:text-blue-400'
                     : 'text-[#1D74DF] hover:text-[#2A8CFF]'
                 }`}
               >
                 <span
-                  className={`w-7 h-7 rounded-full border flex items-center justify-center ${
+                  className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 ${
                     theme === 'dark'
                       ? 'border-blue-500/40 bg-blue-500/10'
                       : 'border-[#2A8CFF]/45 bg-[#2A8CFF]/10'
@@ -755,21 +755,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVideoReel }) => 
 
             {/* Quick proof stats adjacency */}
             <div
-              className="hero-stats-anim grid grid-cols-3 gap-6 pt-8 sm:pt-10 mt-8 sm:mt-10 border-t"
+              className="hero-stats-anim grid grid-cols-3 gap-2 sm:gap-6 pt-6 sm:pt-10 mt-6 sm:mt-10 border-t"
               style={{
                 borderColor: theme === 'dark' ? 'rgba(255,255,255,0.08)' : '#DCE5F0',
               }}
             >
               <div>
                 <div
-                  className={`font-display text-2xl sm:text-3xl font-bold tracking-tight tabular-nums ${
+                  className={`font-display text-xl sm:text-2xl md:text-3xl font-bold tracking-tight tabular-nums ${
                     theme === 'dark' ? 'text-blue-500' : 'text-[#2A8CFF]'
                   }`}
                 >
                   45M+
                 </div>
                 <div
-                  className={`text-xs uppercase tracking-wider font-mono-tech mt-1 ${
+                  className={`text-[9.5px] sm:text-xs uppercase tracking-wider font-mono-tech mt-0.5 sm:mt-1 ${
                     theme === 'dark' ? 'text-slate-500' : 'text-[#475569] font-medium'
                   }`}
                 >
@@ -778,14 +778,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVideoReel }) => 
               </div>
               <div>
                 <div
-                  className={`font-display text-2xl sm:text-3xl font-bold tracking-tight tabular-nums ${
+                  className={`font-display text-xl sm:text-2xl md:text-3xl font-bold tracking-tight tabular-nums ${
                     theme === 'dark' ? 'text-blue-500' : 'text-[#2A8CFF]'
                   }`}
                 >
                   120+
                 </div>
                 <div
-                  className={`text-xs uppercase tracking-wider font-mono-tech mt-1 ${
+                  className={`text-[9.5px] sm:text-xs uppercase tracking-wider font-mono-tech mt-0.5 sm:mt-1 ${
                     theme === 'dark' ? 'text-slate-500' : 'text-[#475569] font-medium'
                   }`}
                 >
@@ -794,14 +794,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVideoReel }) => 
               </div>
               <div>
                 <div
-                  className={`font-display text-2xl sm:text-3xl font-bold tracking-tight tabular-nums ${
+                  className={`font-display text-xl sm:text-2xl md:text-3xl font-bold tracking-tight tabular-nums ${
                     theme === 'dark' ? 'text-blue-500' : 'text-[#2A8CFF]'
                   }`}
                 >
                   30+
                 </div>
                 <div
-                  className={`text-xs uppercase tracking-wider font-mono-tech mt-1 ${
+                  className={`text-[9.5px] sm:text-xs uppercase tracking-wider font-mono-tech mt-0.5 sm:mt-1 ${
                     theme === 'dark' ? 'text-slate-500' : 'text-[#475569] font-medium'
                   }`}
                 >

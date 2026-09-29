@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
+import { useNavigation } from '../context/NavigationContext';
 import { Sun, Moon, Menu, X, ArrowUpRight } from 'lucide-react';
 import avenixLogo from '../assets/images/avenix_logo_transparent.svg';
 
 export const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
+  const { currentPage, navigateTo } = useNavigation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -20,6 +22,29 @@ export const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (id: string) => {
+    setMobileMenuOpen(false);
+    if (currentPage !== 'home') {
+      navigateTo('home', id);
+    } else {
+      scrollToSection(id);
+    }
+  };
+
+  const handleContactClick = () => {
+    setMobileMenuOpen(false);
+    navigateTo('contact');
+  };
+
+  const handleLogoClick = () => {
+    setMobileMenuOpen(false);
+    if (currentPage !== 'home') {
+      navigateTo('home');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
@@ -60,8 +85,8 @@ export const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
           {/* Zone 1: Official Transparent AVENIX Brand Logo */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center group text-left focus:outline-none shrink-0"
+            onClick={handleLogoClick}
+            className="flex items-center group text-left focus:outline-none shrink-0 cursor-pointer"
             aria-label="AVENIX Homepage"
           >
             <img
@@ -75,61 +100,52 @@ export const Navbar: React.FC = () => {
             />
           </button>
 
-          {/* Zone 2: Clean 4-6 text navigation links */}
+          {/* Zone 2: Navigation links matching reference image: Work, About, Process, Pricing, Testimonials */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
             <button
-              onClick={() => scrollToSection('work')}
-              className={`transition-colors hover:underline underline-offset-8 ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
+              onClick={() => handleNavClick('work')}
+              className={`transition-colors hover:underline underline-offset-8 cursor-pointer ${
+                theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-[#2A8CFF]'
               }`}
-              style={{ color: theme === 'dark' ? '#A7ADB8' : '#1E293B' }}
+              style={{ color: theme === 'dark' ? '#E2E8F0' : '#1E293B' }}
             >
               Work
             </button>
             <button
-              onClick={() => scrollToSection('motion-showcase')}
-              className={`transition-colors hover:underline underline-offset-8 ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
+              onClick={() => handleNavClick('about')}
+              className={`transition-colors hover:underline underline-offset-8 cursor-pointer ${
+                theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-[#2A8CFF]'
               }`}
-              style={{ color: theme === 'dark' ? '#A7ADB8' : '#1E293B' }}
-            >
-              Motion Reel
-            </button>
-            <button
-              onClick={() => scrollToSection('visuals')}
-              className={`transition-colors hover:underline underline-offset-8 ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
-              }`}
-              style={{ color: theme === 'dark' ? '#A7ADB8' : '#1E293B' }}
-            >
-              AI Visuals
-            </button>
-            <button
-              onClick={() => scrollToSection('services')}
-              className={`transition-colors hover:underline underline-offset-8 ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
-              }`}
-              style={{ color: theme === 'dark' ? '#A7ADB8' : '#1E293B' }}
-            >
-              Services
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className={`transition-colors hover:underline underline-offset-8 ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
-              }`}
-              style={{ color: theme === 'dark' ? '#A7ADB8' : '#1E293B' }}
+              style={{ color: theme === 'dark' ? '#E2E8F0' : '#1E293B' }}
             >
               About
             </button>
             <button
-              onClick={() => scrollToSection('contact')}
-              className={`transition-colors hover:underline underline-offset-8 ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
+              onClick={() => handleNavClick('process')}
+              className={`transition-colors hover:underline underline-offset-8 cursor-pointer ${
+                theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-[#2A8CFF]'
               }`}
-              style={{ color: theme === 'dark' ? '#A7ADB8' : '#1E293B' }}
+              style={{ color: theme === 'dark' ? '#E2E8F0' : '#1E293B' }}
             >
-              Contact
+              Process
+            </button>
+            <button
+              onClick={() => handleNavClick('pricing')}
+              className={`transition-colors hover:underline underline-offset-8 cursor-pointer ${
+                theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-[#2A8CFF]'
+              }`}
+              style={{ color: theme === 'dark' ? '#E2E8F0' : '#1E293B' }}
+            >
+              Pricing
+            </button>
+            <button
+              onClick={() => handleNavClick('testimonials')}
+              className={`transition-colors hover:underline underline-offset-8 cursor-pointer ${
+                theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-[#2A8CFF]'
+              }`}
+              style={{ color: theme === 'dark' ? '#E2E8F0' : '#1E293B' }}
+            >
+              Testimonials
             </button>
           </nav>
 
@@ -139,7 +155,7 @@ export const Navbar: React.FC = () => {
             <button
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-              className={`p-2.5 rounded-full border transition-all duration-300 relative overflow-hidden group ${
+              className={`p-2.5 rounded-full border transition-all duration-300 relative overflow-hidden group cursor-pointer ${
                 theme === 'dark'
                   ? 'border-white/10 bg-white/5 hover:border-blue-500/50 hover:bg-white/10 text-white'
                   : 'border-[#CBD8E8] bg-white/90 hover:border-[#2A8CFF]/60 hover:bg-[#F2F7FD] text-[#111827] shadow-xs'
@@ -152,24 +168,19 @@ export const Navbar: React.FC = () => {
               )}
             </button>
 
-            {/* CTA Button */}
+            {/* CTA Button Matching Reference Image: GET IN TOUCH */}
             <button
-              onClick={() => scrollToSection('contact')}
-              className={`hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold uppercase tracking-wider font-mono-tech rounded-lg text-white transition-all duration-200 active:scale-95 ${
-                theme === 'dark'
-                  ? 'bg-blue-600 hover:bg-blue-500 shadow-[0_0_20px_rgba(22,119,255,0.35)] hover:shadow-[0_0_28px_rgba(22,119,255,0.6)]'
-                  : 'bg-[#2A8CFF] hover:bg-[#3B97FF] shadow-[0_8px_22px_rgba(42,140,255,0.30)] hover:shadow-[0_10px_28px_rgba(42,140,255,0.45)]'
-              }`}
+              onClick={() => scrollToSection('final-cta')}
+              className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold uppercase tracking-wider font-mono-tech rounded-full text-white bg-blue-600 hover:bg-blue-500 shadow-[0_0_24px_rgba(22,119,255,0.45)] hover:shadow-[0_0_32px_rgba(56,189,248,0.65)] transition-all duration-200 active:scale-95 cursor-pointer"
             >
-              <span>Let's Create</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <span>GET IN TOUCH</span>
             </button>
 
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
-              className={`md:hidden p-2.5 rounded-lg border transition-colors ${
+              className={`md:hidden p-2.5 rounded-lg border transition-colors cursor-pointer ${
                 theme === 'dark'
                   ? 'border-white/10 bg-white/5 text-white'
                   : 'border-[#CBD8E8] bg-white/90 text-[#111827]'
@@ -188,79 +199,62 @@ export const Navbar: React.FC = () => {
             theme === 'dark' ? 'bg-[#05070B]/95 text-white' : 'bg-[#F7FAFD]/96 text-[#111827]'
           }`}
         >
-          <div className="flex flex-col gap-6 py-6 border-t border-b"
+          <div className="flex flex-col gap-6 py-8 border-t border-b"
             style={{
               borderColor: theme === 'dark' ? 'rgba(255,255,255,0.08)' : '#DCE5F0',
             }}
           >
             <button
-              onClick={() => scrollToSection('work')}
-              className={`text-left font-display text-2xl font-bold transition-colors ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
+              onClick={() => handleNavClick('work')}
+              className={`text-left font-display text-2xl font-bold transition-colors cursor-pointer ${
+                theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-[#2A8CFF]'
               }`}
             >
-              Selected Work
+              Work
             </button>
             <button
-              onClick={() => scrollToSection('motion-showcase')}
-              className={`text-left font-display text-2xl font-bold transition-colors ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
+              onClick={() => handleNavClick('about')}
+              className={`text-left font-display text-2xl font-bold transition-colors cursor-pointer ${
+                theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-[#2A8CFF]'
               }`}
             >
-              Motion Reel
+              About
             </button>
             <button
-              onClick={() => scrollToSection('visuals')}
-              className={`text-left font-display text-2xl font-bold transition-colors ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
-              }`}
-            >
-              AI Visuals
-            </button>
-            <button
-              onClick={() => scrollToSection('services')}
-              className={`text-left font-display text-2xl font-bold transition-colors ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
-              }`}
-            >
-              What I Create
-            </button>
-            <button
-              onClick={() => scrollToSection('process')}
-              className={`text-left font-display text-2xl font-bold transition-colors ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
+              onClick={() => handleNavClick('process')}
+              className={`text-left font-display text-2xl font-bold transition-colors cursor-pointer ${
+                theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-[#2A8CFF]'
               }`}
             >
               Process
             </button>
             <button
-              onClick={() => scrollToSection('about')}
-              className={`text-left font-display text-2xl font-bold transition-colors ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
+              onClick={() => handleNavClick('pricing')}
+              className={`text-left font-display text-2xl font-bold transition-colors cursor-pointer ${
+                theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-[#2A8CFF]'
               }`}
             >
-              About Goodluck
+              Pricing
             </button>
             <button
-              onClick={() => scrollToSection('contact')}
-              className={`text-left font-display text-2xl font-bold transition-colors ${
-                theme === 'dark' ? 'hover:text-blue-500' : 'hover:text-[#2A8CFF]'
+              onClick={() => handleNavClick('testimonials')}
+              className={`text-left font-display text-2xl font-bold transition-colors cursor-pointer ${
+                theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-[#2A8CFF]'
               }`}
             >
-              Contact
+              Testimonials
             </button>
           </div>
 
           <div className="flex flex-col gap-4">
             <button
-              onClick={() => scrollToSection('contact')}
-              className={`w-full py-3.5 text-center font-semibold uppercase tracking-wider font-mono-tech text-xs rounded-lg text-white shadow-lg ${
-                theme === 'dark'
-                  ? 'bg-blue-600 shadow-blue-500/30'
-                  : 'bg-[#2A8CFF] hover:bg-[#3B97FF] shadow-[#2A8CFF]/30'
-              }`}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                scrollToSection('final-cta');
+              }}
+              className="w-full py-4 text-center font-bold uppercase tracking-wider font-mono-tech text-xs rounded-full text-white bg-blue-600 shadow-[0_0_24px_rgba(22,119,255,0.45)] cursor-pointer"
             >
-              Let's Create Together
+              GET IN TOUCH
             </button>
             <div
               className={`flex items-center justify-between text-xs font-mono-tech ${
