@@ -26,14 +26,14 @@ export const CinematicTextController: React.FC = () => {
     const getTargets = () => {
       const elements = Array.from(
         document.querySelectorAll<HTMLElement>(
-          'main section:not(#hero):not(#services) h2, main section:not(#hero):not(#services) h3, main section:not(#hero):not(#services) h4, main section:not(#hero):not(#services) p, main section:not(#hero):not(#services) blockquote, footer h2, footer p'
+          'main section:not(#hero):not(#services):not(#testimonials) h2, main section:not(#hero):not(#services):not(#testimonials) h3, main section:not(#hero):not(#services):not(#testimonials) h4, main section:not(#hero):not(#services):not(#testimonials) p, main section:not(#hero):not(#services):not(#testimonials) blockquote, footer h2, footer p'
         )
       );
 
       // Also include section eyebrow labels next to the blue dot indicator
       const eyebrows = Array.from(
         document.querySelectorAll<HTMLElement>(
-          'main section:not(#hero):not(#services) span.font-mono-tech'
+          'main section:not(#hero):not(#services):not(#testimonials) span.font-mono-tech'
         )
       ).filter((el) => {
         const parent = el.parentElement;
@@ -151,7 +151,9 @@ export const CinematicTextController: React.FC = () => {
 
     // Subtle scroll-linked depth for section h2 headings
     const sectionHeadings = Array.from(
-      document.querySelectorAll<HTMLElement>('main section:not(#hero):not(#services) h2')
+      document.querySelectorAll<HTMLElement>(
+        'main section:not(#hero):not(#services):not(#testimonials) h2'
+      )
     );
 
     let rafId = 0;
